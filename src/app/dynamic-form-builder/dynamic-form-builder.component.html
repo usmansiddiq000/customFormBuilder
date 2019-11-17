@@ -1,0 +1,10 @@
+<form (ngSubmit)="onSubmitEvent.emit(this.form.value)" [formGroup]="form">
+  <div *ngFor="let field of fields let i = index">
+    <div *ngIf = "CreateRow[i]" [ngClass] = "{'row' : CreateRow[i]}">
+        <div [ngClass] = "{'col-md-12': order[i+k] == 1, 'col-md-3 col-lg-3 col-sm-3' : order[i+k] == 4 , 'col-md-2': order[i+k] == 2 }" *ngFor = "let item of [].constructor(order[i]);let k = index">
+            <app-field-builder [field]="fields[i+k]" [form]="form"></app-field-builder>
+        </div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+</form>
